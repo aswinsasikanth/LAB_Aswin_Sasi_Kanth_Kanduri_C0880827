@@ -91,7 +91,6 @@ public class MainActivity extends AppCompatActivity
                 selected.setText(text);
                 if (selected.getText().equals("Hybrid Map")){
                     mGoogleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-
                 }
                 else if (selected.getText().equals("Normal Map")){
                     mGoogleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
@@ -116,7 +115,6 @@ public class MainActivity extends AppCompatActivity
         mapFrag = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.google_map);
         mapFrag.getMapAsync(this);
     }
-
     @Override
     public void onPause() {
         super.onPause();
@@ -125,7 +123,6 @@ public class MainActivity extends AppCompatActivity
             LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
         }
     }
-
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap)
     {
@@ -145,7 +142,6 @@ public class MainActivity extends AppCompatActivity
             buildGoogleApiClient();
             mGoogleMap.setMyLocationEnabled(true);
         }
-
 
         mGoogleMap.setOnMapClickListener(latLng -> {
             MarkerOptions markerOptions = new MarkerOptions().position(latLng);
@@ -193,11 +189,7 @@ public class MainActivity extends AppCompatActivity
                                 ArrayList<String> SavedLocations = new ArrayList<>(currentList);
 
                                 SavedLocations.add(add);
-
                                 saveList(SavedLocations);
-
-
-
 
                             } catch (IOException e) {
                                 e.printStackTrace();
@@ -210,13 +202,7 @@ public class MainActivity extends AppCompatActivity
                 });
 
             }
-
-
         });
-
-
-
-
     }
 
     protected synchronized void buildGoogleApiClient() {
@@ -288,7 +274,6 @@ public class MainActivity extends AppCompatActivity
                         .create()
                         .show();
 
-
             } else {
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
@@ -322,8 +307,6 @@ public class MainActivity extends AppCompatActivity
                 }
                 return;
             }
-
-
         }
     }
     public void saveList(List<String> list) {
@@ -346,15 +329,7 @@ public class MainActivity extends AppCompatActivity
             list = Arrays.asList(savedString.split("__,__"));
         }
         return list;
-
-
     }
-
-
-
-
-
-
 public void Favourites(View view) {
         startActivity(new Intent(MainActivity.this,FavouriteLocations.class));
     }
